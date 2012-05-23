@@ -1,0 +1,29 @@
+var aspectRatio = 1/0.999;
+
+var screenWidth = 640; 
+var screenHeight = 360;//
+	
+	var cwidth, cheight, canvasScaleX, canvasScaleY;
+	
+	var newWidth, newHeight, newAspectRatio;
+	pokki.setPopupClientSize(screenWidth, screenHeight);
+
+	var aspectRatio2D = 1/0.99;
+	var aspectRatio3D = 16/9;
+	
+	var UIscaling = 0.67;
+	var isHD = false;
+	
+function ScreenResize(){	
+
+}
+
+document.addEventListener('webkitfullscreenchange', ResetFullscreen);
+
+function ResetFullscreen(){
+	ScreenResize();
+}
+
+window.onresize = function(){
+	ScreenResize();
+}
