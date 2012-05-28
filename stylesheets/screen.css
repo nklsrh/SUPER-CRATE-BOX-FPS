@@ -1,8 +1,9 @@
-canvas#gameCanvas {
+#gameCanvas {
     background-color: #000;
     margin-top: 12%;        
-    width: 100%;
-    height: 33%;
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 /*
@@ -193,23 +194,25 @@ header span.right-tail {
 }
 
 header h1 {
-  background-color: #7c334f;
+  background-color: #dd2d1d;
   font-size: 2.5em;
   font-weight: 800;
   font-style: normal;
   text-transform: uppercase;
-  color: #ece4d8;
+  color: #fff;
+  text-shadow: 0px 4px #000;
   text-align: center;
   line-height:1;
-  padding: 14px 20px 0;
+  padding: 14px 20px 10px;
 }
 
 header h2 {
-  background-color: #7c334f;
-  font: bold italic .85em/1.5 Georgia, Times, “Times New Roman”, serif;
-  color: #e69b95;
-  padding-bottom: 14px;
-  margin-top: -3px;
+  background-color: #bedcff;
+  font: bold .85em/1.5 Georgia, Times, “Times New Roman”, serif;
+  color: #000;
+  text-shadow: 0px 1px #fff;
+  padding-bottom: 4px;
+  margin-top: 0px;
   text-align: center;
 }
 
@@ -296,14 +299,14 @@ footer {
 footer span.ribbon-outer {
   display: block;
   position: relative;
-  border-bottom: 2px solid #bdb6ad;
+  border-bottom: 2px solid #bedcff;
 }
 
 footer span.ribbon-inner {
   position: relative;
   display: block;
-  background-color: #cd596b;
-  border: 2px solid #7c334f;
+  background-color: #bedcff;
+  border: 2px solid #bedcff;
   padding: 1px;
   z-index: 1;
 }
@@ -361,6 +364,7 @@ footer span.left-tail {
 footer span.right-tail {
   background-position: -18px 0;
   right: -11px;
+  background-color: #bedcff;
 }
 
 footer span.octocat {
@@ -374,7 +378,7 @@ footer span.octocat {
 /* content */
 
 body {
-  background: #ece4d8;
+  background-color: #73b4ff;
   font: normal normal 15px/1.5 Georgia, Palatino,” Palatino Linotype”, Times, “Times New Roman”, serif;
   color: #544943;
   -webkit-font-smoothing: antialiased;

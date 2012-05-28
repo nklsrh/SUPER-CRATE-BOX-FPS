@@ -3,7 +3,7 @@
 	<camera id="maincamera" loc_y="0" loc_x="0" loc_z="100" rot_order="ROT_XYZ" xtype="C_PERSPECTIVE" rot_z="0" rot_x="0.2" rot_y="0" />
 
 	<scene id="mainscene" camera="#maincamera" ambient_color="#444">
-		<collada document="ball.dae" id="ball" loc_z = "5" rot_z = "5" scale="1" />
+		<collada document="player.dae" id="player" loc_z = "5" rot_z = "5" scale="1" />
 		<light id="mainlight" loc_x="0" loc_y="0" loc_z="160"  attenuation_constant="0.98" type="L_POINT" />
 	</scene>
 </glge>

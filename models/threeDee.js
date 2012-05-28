@@ -1,41 +1,94 @@
-////////////////////////////////////////////////////////////////////////////// SETUP
-var GLGE_doc = new GLGE.Document();
+var container, stats;
 
-GLGE_doc.load("./glge/scene_arena.xml");
+var camera, scene, renderer, objects;
+var particleLight, pointLight;
+var dae, skin;
 
-var GLGE_renderer = new GLGE.Renderer(canvas);
-var GLGE_scene = new GLGE.Scene();
-var GLGE_camera = GLGE_scene.camera;
+//var texture = THREE.ImageUtils.loadTexture( 'textures/ash_uvgrid01.jpg' );
 
-var Arena; 
-var GLGE_Tiles = new Array;
-var GLGE_Player;
-var GLGE_Bots = new Array;
-var GLGE_BombotSpawn = new Array;
-var GLGE_BombotBlast = new Array;
 
-var GLGE_HasLoaded = false;
-////////////////////////////////////////////////////////////////////////////// LOAD
-GLGE_doc.onLoad = function() {
-		
-}
-function GLGE_LoadScene(){	
-	GLGE_scene = GLGE_doc.getElement("mainscene");
-	GLGE_camera = GLGE_doc.getElement("maincamera");
-	GLGE_scene.setBackgroundColor('#000');
-	GLGE_renderer.setScene(GLGE_scene);
+function SetupThree() {
 
-}
-///////////////////////////////////////////////////////////////////////////// RENDER
-function GLGE_Loop(){	
-	if(Modernizr.webgl)
-	GLGE_renderer.render();	
-}
-///////////////////////////////////////////////////////////////////////////// UPDATE
-var lol = 0;
-function GLGE_Update(){	
-	if(Modernizr.webgl){
-	        GLGE_UpdateCamera();
-	
+container = document.getElementById ('gameCanvas');
+
+scene = new THREE.Scene();
+
+camera = new THREE.PerspectiveCamera( 45, 600/240, 1, 2000 );
+camera.position.set( 2, 2, 3 );
+scene.add( camera );
+
+var loader = new THREE.OBJLoader();
+loader.load( "./models/env/redblock.obj", function ( object ) {
+
+	for ( var i = 0, l = object.children.length; i < l; i ++ ) {
+
+		//object.children[ i ].material.map = texture;
+
 	}
+
+	object.position.y = - 80;
+	scene.add( object );
+  animate();
+} );
+
+// Grid
+
+var line_material = new THREE.LineBasicMaterial( { color: 0xcccccc, opacity: 0.2 } ),
+	geometry = new THREE.Geometry(),
+	floor = -0.04, step = 1, size = 14;
+
+for ( var i = 0; i <= size / step * 2; i ++ ) {
+
+	geometry.vertices.push( new THREE.Vector3( - size, floor, i * step - size ) );
+	geometry.vertices.push( new THREE.Vector3(   size, floor, i * step - size ) );
+
+	geometry.vertices.push( new THREE.Vector3( i * step - size, floor, -size ) );
+	geometry.vertices.push( new THREE.Vector3( i * step - size, floor,  size ) );
+
+}
+
+var line = new THREE.Line( geometry, line_material, THREE.LinePieces );
+scene.add( line );
+
+particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
+scene.add( particleLight );
+
+// Lights
+
+scene.add( new THREE.AmbientLight( 0xcccccc ) );
+
+
+renderer = new THREE.WebGLRenderer();
+renderer.setSize( 600, 240 );
+
+container.appendChild( renderer.domElement );
+}
+
+//
+
+var t = 0;
+function animate() {
+
+requestAnimationFrame( animate );
+
+render();
+
+}
+
+function render() {
+
+var timer = Date.now() * 0.0005;
+
+camera.position.x = Math.cos( timer ) * 10;
+camera.position.y = 2;
+camera.position.z = Math.sin( timer ) * 10;
+
+camera.lookAt( scene.position );
+
+particleLight.position.x = Math.sin( timer * 4 ) * 3009;
+particleLight.position.y = Math.cos( timer * 5 ) * 4000;
+particleLight.position.z = Math.cos( timer * 4 ) * 3009;
+
+renderer.render( scene, camera );
+
 }

@@ -8,34 +8,30 @@
     <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
 
     <script type="text/javascript" src="javascripts/extras/modernizr.js"></script>
-    <script type="text/javascript" src="javascripts/extras/glge-compiled.js"></script>
+    <script type="text/javascript" src="javascripts/extras/Three.js"></script>
+    <script type="text/javascript" src="javascripts/extras/ColladaLoader.js"></script>
+        <script type="text/javascript" src="javascripts/extras/OBJLoader.js"></script>
     <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/extras/rightClick.js"></script>
     <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
     <script type="text/javascript" src="javascripts/extras/gamequery-0.5.1.js"></script>
     <script type="text/javascript" src="javascripts/extras/headsmart.min.js"></script>
     <title>SUPER CRATE BOX FPS by nklsrh</title>
-    <script type="text/javascript" src="javascripts/game/main.js"></script>
     <script type="text/javascript" src="javascripts/game/mouse.js"></script>
     <script type="text/javascript" src="javascripts/game/keyboard.js"></script>
     <script type="text/javascript" src="models/threeDee.js"></script>
     <script type="text/javascript" src="javascripts/game/game.js"></script>
+    <script type="text/javascript" src="javascripts/game/main.js"></script>
   </head>
 
   <body onload='main();'>
-    <a id="forkme_banner" href="https://github.com/nklsrh/SUPER-CRATE-BOX-FPS">Fork on GitHub</a>
+    <!--<a id="forkme_banner" href="https://github.com/nklsrh/SUPER-CRATE-BOX-FPS">Fork on GitHub</a>-->
     <div class="shell">
       <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
             <h1>SUPER CRATE BOX FPS</h1>
             <h2>A different interpretation of the awesome Vlambeer game.</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
       </header>
-      <canvas id='gameCanvas' width='960' height='640'></canvas>
+      <div id='gameCanvas'></div>
     </div>
   </body>
 </html>

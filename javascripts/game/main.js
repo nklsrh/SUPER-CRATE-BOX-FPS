@@ -2,8 +2,6 @@
 var gameCanvas, ctx;
 
 function main(){
-        gameCanvas = document.getElementById("gameCanvas");
-        ctx = gameCanvas.getContext("webgl");
 
 	game = new Game();
 	game.Setup();
