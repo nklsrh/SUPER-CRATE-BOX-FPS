@@ -32,7 +32,7 @@ scene.add( camera );
 
 // Grid
 
-var line_material = new THREE.LineBasicMaterial( { color: 0xcccccc, opacity: 0.2 } ),
+var line_material = new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2 } ),
 	geometry = new THREE.Geometry(),
 	floor = -0.04, step = 1, size = 14;
 
@@ -53,21 +53,24 @@ scene.add( line );
 
 scene.add( dae );
 
-var ambient = new THREE.AmbientLight( 0x101030 );
+var ambient = new THREE.AmbientLight( 0xffffff);
 scene.add( ambient );
 
 var pointLight = new THREE.PointLight ( 0xffffff );
-pointLight.position.x = 110;
-pointLight.position.y = 10;
+pointLight.position.x = 400;
+pointLight.position.y = 100;
 pointLight.position.z = 110;
+pointLight.intensity = 3;
 scene.add (pointLight);
+
+var pointLight2 = new THREE.PointLight ( 0xffffff );
+pointLight2.position.x = -10;
+pointLight2.position.y = 1000;
+pointLight2.position.z = -110;
+scene.add (pointLight2);
 
 particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
 scene.add( particleLight );
-
-// Lights
-
-scene.add( new THREE.AmbientLight( 0xcccccc ) );
 
 renderer = new THREE.WebGLRenderer();
 renderer.setSize( 600, 240 );
