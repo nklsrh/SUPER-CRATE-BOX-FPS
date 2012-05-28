@@ -53,13 +53,21 @@ scene.add( line );
 
 scene.add( dae );
 
+var ambient = new THREE.AmbientLight( 0x101030 );
+scene.add( ambient );
+
+var pointLight = new THREE.PointLight ( 0xffffff );
+pointLight.position.x = 110;
+pointLight.position.y = 10;
+pointLight.position.z = 110;
+scene.add (pointLight);
+
 particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
 scene.add( particleLight );
 
 // Lights
 
 scene.add( new THREE.AmbientLight( 0xcccccc ) );
-
 
 renderer = new THREE.WebGLRenderer();
 renderer.setSize( 600, 240 );
