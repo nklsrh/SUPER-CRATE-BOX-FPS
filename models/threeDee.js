@@ -4,10 +4,23 @@ var camera, scene, renderer, objects;
 var particleLight, pointLight;
 var dae, skin;
 
-//var texture = THREE.ImageUtils.loadTexture( 'textures/ash_uvgrid01.jpg' );
+var loader = new THREE.ColladaLoader();
+loader.options.convertUpAxis = true;
+loader.load( './models/env/redblock.dae', function colladaReady( collada ) {
 
+dae = collada.scene;
+skin = collada.skins[ 0 ];
+dae.dynamic = true;
+dae.scale.x = dae.scale.y = dae.scale.z = 1;
+dae.updateMatrix();
 
-function SetupThree() {
+init();
+animate();
+
+} );
+
+function SetupThree(){}
+function init() {
 
 container = document.getElementById ('gameCanvas');
 
@@ -16,20 +29,6 @@ scene = new THREE.Scene();
 camera = new THREE.PerspectiveCamera( 45, 600/240, 1, 2000 );
 camera.position.set( 2, 2, 3 );
 scene.add( camera );
-
-var loader = new THREE.OBJLoader();
-loader.load( "./models/env/redblock.obj", function ( object ) {
-
-	for ( var i = 0, l = object.children.length; i < l; i ++ ) {
-
-		//object.children[ i ].material.map = texture;
-
-	}
-
-	object.position.y = - 80;
-	scene.add( object );
-  animate();
-} );
 
 // Grid
 
@@ -49,6 +48,10 @@ for ( var i = 0; i <= size / step * 2; i ++ ) {
 
 var line = new THREE.Line( geometry, line_material, THREE.LinePieces );
 scene.add( line );
+
+// Add the COLLADA
+
+scene.add( dae );
 
 particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
 scene.add( particleLight );

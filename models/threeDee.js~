@@ -50,10 +50,6 @@ for ( var i = 0; i <= size / step * 2; i ++ ) {
 var line = new THREE.Line( geometry, line_material, THREE.LinePieces );
 scene.add( line );
 
-// Add the COLLADA
-
-scene.add( dae );
-
 particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
 scene.add( particleLight );
 
